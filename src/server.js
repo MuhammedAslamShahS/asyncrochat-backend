@@ -25,6 +25,16 @@ app.use(
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
+
+// not found
+app.use("*", (req, res) => {
+  res.status(404).json({
+    success: false,
+    message: "API route not found",
+  });
+});
+
+
 app.listen(PORT, () => {
   console.log("Server running on port " + PORT);
 });
