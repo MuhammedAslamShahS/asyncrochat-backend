@@ -13,5 +13,8 @@ router.get("/login", (req, res) => {
 router.get("/logout", (req, res) => {
     res.send("logout endpoint");
 });
+router.get("/set", (req, res) => {
+    res.send("logout endpoint");
+});
 
 export default router;
