@@ -10,14 +10,18 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// parse json
 app.use(express.json());
 
-// allow frontend to talk to backend
-app.use(cors({
-  origin: "https://your-frontend.vercel.app"
-}));
+// ✅ allow ONLY your frontend
+app.use(
+  cors({
+    origin: "https://asyncrochat-frontend.vercel.app",
+    credentials: true,
+  })
+);
 
-// API routes
+// routes
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
